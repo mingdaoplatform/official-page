@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@splidejs/splide": "^4.0.7",
+    "@splidejs/vue-splide": "^0.6.7",
     "vue": "^3.2.25",
     "vue-router": "4"
   },

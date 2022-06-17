@@ -7,6 +7,18 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.18.5.tgz#337062363436a893a2d22faa60be5bb37091c83c"
   integrity sha512-YZWVaglMiplo7v8f1oMQ5ZPQr0vn7HPeZXxXWsxXJRjGVrzUFn9OxFQl1sb5wzfootjA/yChhW84BV+383FSOw==
 
+"@splidejs/splide@^4.0.7":
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-4.0.7.tgz#f442b7c5fc99df472c6f989787e1fb331cf177c6"
+  integrity sha512-aJAOGJN2lwjwou3mxQofc3uhe+RXpw9in0WfysFX7AMT/mj7wSqoetfm41s7J8jU6FJ3ZWaLYgSJIpBAQ5wyqw==
+
+"@splidejs/vue-splide@^0.6.7":
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/@splidejs/vue-splide/-/vue-splide-0.6.7.tgz#c8f451c30c44568c4301608b0c33e4adf3693334"
+  integrity sha512-VWT03R6EOd58+klcAUCboR7FF0yNWon93ddBy8VqO4a/TbYgpx+LOBQLFovFFm7VBdXlRd+XzkxIi705XZVeFQ==
+  dependencies:
+    "@splidejs/splide" "^4.0.7"
+
 "@vitejs/plugin-vue@^2.3.3":
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-2.3.3.tgz#fbf80cc039b82ac21a1acb0f0478de8f61fbf600"

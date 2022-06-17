@@ -1,1 +1,16 @@
-<template>home</template>
+<script lang="ts" setup>
+import bannerVue from "../components/banner.vue";
+</script>
+
+<template>
+  <div class="home">
+    <banner-vue></banner-vue>
+  </div>
+</template>
+
+<style lang="scss">
+.home {
+  width: 100vw;
+  overflow-x: hidden;
+}
+</style>

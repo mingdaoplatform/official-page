@@ -4,6 +4,10 @@
 > 歡迎優秀的學長姐和國二學弟妹一起加入  
 > 「做個問題兒童」，考試科科沒問題  
 
+# Project Detail 專案細節
+ - [Contributors](/markdown/contributors.md)
+
+
 # 目的
 黃金七八月感到迷惘嗎?  
 黃金七八月想要找人一起讀書嗎?  
@@ -19,9 +23,11 @@
 出現任何問題都可以聯絡我們的instagram～  
 > @beaproblemchild_2022  
 
-或者聯繫總召～
-
+或者聯繫總召:
 手機：0906562470（王千育）  
 信箱：wcy0906562470@gmail.com（王千育）  
-又或者聯繫技術顧問~  
-信箱：lazpytb+bapc@gmail.com（葉柏辰） 81yy587@gmail.com（林仲文）、toomuchname1@gmail.com（彭柏鈞）
+又或者聯繫技術顧問:  
+信箱：
+ - lazpytb+bapc@gmail.com（葉柏辰） 
+ - 81yy587@gmail.com（林仲文） 
+ - toomuchname1@gmail.com（彭柏鈞）

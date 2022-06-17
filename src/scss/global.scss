@@ -9,5 +9,34 @@
 
 body {
   overflow-x: hidden;
-  background-color: #eee;
+}
+// Variables
+$Black: #353535;
+$White: #fff;
+$BrightGrey: #555762;
+$LightBlack: #4f4f4f;
+$MainColor: #5efff2;
+$MainPurple: #7b6ff6;
+
+$SecondaryColor: #546bed;
+
+// variables
+$FooterHeight: 127px;
+$HeaderHeight: 80px;
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@mixin phone {
+  @media screen and (max-width: 620px) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media screen and (max-width: 1050px) {
+    @content;
+  }
 }

@@ -34,7 +34,12 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+@import "../scss/global.scss";
 .welcome {
+  @include phone {
+    height: calc(2rem + 150px);
+    padding: 40px 5px;
+  }
   width: 100vw;
   text-align: center;
   padding: 60px 0;
@@ -42,6 +47,7 @@ onMounted(() => {
     font-size: 2rem;
     font-weight: 400;
     text-align: center;
+    color: 232323;
     span {
       background: linear-gradient(45deg, #3a1c71, #d76d77, #ffaf7b);
       background: -webkit-linear-gradient(45deg, #3a1c71, #d76d77, #ffaf7b);

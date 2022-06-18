@@ -6,7 +6,7 @@ const links = reactive<Array<Link>>(linkGroup);
 </script>
 
 <template>
-  <div class="linkBlock">
+  <div class="linksBlock">
     <h2>我們需要你的戳戳 Links</h2>
     <div class="links">
       <div class="linkBlock" v-for="i in links">
@@ -19,7 +19,7 @@ const links = reactive<Array<Link>>(linkGroup);
 </template>
 
 <style lang="scss" scoped>
-.linkBlock {
+.linksBlock {
   h2 {
     text-align: center;
     font-size: 2rem;
@@ -36,7 +36,7 @@ const links = reactive<Array<Link>>(linkGroup);
       margin: 20px;
       .link {
         width: 300px;
-        max-width: 4000px;
+        max-width: 90vw;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -44,6 +44,7 @@ const links = reactive<Array<Link>>(linkGroup);
         border-radius: 5px;
         padding: 20px 30px;
         transition: 0.2s;
+        text-align: center;
         &:hover {
           transform: scale(110%);
         }

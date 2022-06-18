@@ -15,7 +15,7 @@ const FAQs = reactive<Array<FAQ>>([
   {
     index: 1,
     title: "我該如何操作？",
-    content: `1.可以到各科問題討論區問問題、看別人的問題、嘗試解決其他人的問題
+    content: `1.可以到各科問題討論區問問題、看別人的問題、嘗試解決其他人的問題<br>
 2.利用每日的考古題/小練習來確保功力不會倒退`,
   },
   {
@@ -27,7 +27,7 @@ const FAQs = reactive<Array<FAQ>>([
   {
     index: 3,
     title: "老師/班導如何善用？",
-    content: `老師或班導可以藉由上網站上學生提問的問題，了解學生在這一單元，甚至這一學科的弱點，抑或是不熟、需要加強的地方
+    content: `老師或班導可以藉由上網站上學生提問的問題，了解學生在這一單元，甚至這一學科的弱點，抑或是不熟、需要加強的地方<br>
 或是老師可以藉由每日一英單的欄位當作每日的練習，培養學生手感`,
   },
 ]);
@@ -41,7 +41,7 @@ const toggleFaq = (index: number) => {
     DOM.classList.add("active");
     return;
   } catch (err) {
-    console.error("Fuck: ", err);
+    console.error("rrr: ", err);
   }
 };
 </script>
@@ -93,7 +93,7 @@ const toggleFaq = (index: number) => {
 @import "../scss/global.scss";
 .blockSix {
   overflow: hidden;
-  background-color: #009393;
+  background-color: #fab340;
   display: flex;
   flex-direction: row;
   .block {
@@ -130,9 +130,9 @@ const toggleFaq = (index: number) => {
         }
         overflow: hidden;
         padding: 0;
-        border-top: 1px solid #32a8a8;
+        border-top: 1px solid #fff4e2;
         &:last-child {
-          border-bottom: 1px solid #32a8a8;
+          border-bottom: 1px solid #fff4e2;
         }
         & > .title {
           margin: 30px 0;
@@ -154,7 +154,7 @@ const toggleFaq = (index: number) => {
           }
         }
         .content {
-          color: #d1eded;
+          color: #ffffff;
           font-size: 1rem;
           font-style: normal;
           font-weight: 400;

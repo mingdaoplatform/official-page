@@ -21,7 +21,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #232232;
+  background-color: #232323;
   color: #ffffff;
   padding: 50px 0 20px 0;
   .infos {

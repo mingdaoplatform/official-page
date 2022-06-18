@@ -2,6 +2,7 @@
 import bannerVue from "../components/banner.vue";
 import welcomeVue from "../components/welcome.vue";
 import goalVue from "../components/goal.vue";
+import linksVue from "../components/links.vue";
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import goalVue from "../components/goal.vue";
     <banner-vue></banner-vue>
     <welcome-vue></welcome-vue>
     <goal-vue></goal-vue>
+    <links-vue></links-vue>
   </div>
 </template>
 

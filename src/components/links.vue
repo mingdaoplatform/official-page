@@ -11,7 +11,7 @@ const links = reactive<Array<Link>>(linkGroup);
     <div class="links">
       <div class="linkBlock" v-for="i in links">
         <div class="link">
-          <a :href="i.href">{{ i.title }}</a>
+          <a target="_blank" :href="i.href">{{ i.title }}</a>
         </div>
       </div>
     </div>
@@ -43,6 +43,10 @@ const links = reactive<Array<Link>>(linkGroup);
         background-color: #fff;
         border-radius: 5px;
         padding: 20px 30px;
+        transition: 0.2s;
+        &:hover {
+          transform: scale(110%);
+        }
         a {
           font-size: 1.3rem;
           color: #ffcf90;

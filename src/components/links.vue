@@ -7,7 +7,7 @@ const links = reactive<Array<Link>>(linkGroup);
 
 <template>
   <div class="linkBlock">
-    <h2>連結區 Links</h2>
+    <h2>我們需要你的戳戳 Links</h2>
     <div class="links">
       <div class="linkBlock" v-for="i in links">
         <div class="link">

@@ -15,7 +15,7 @@ import footerVue from "../components/footer.vue";
     <goal-vue></goal-vue>
     <links-vue></links-vue>
     <faq-vue></faq-vue>
-    <members-vue></members-vue>
+    <members-vue :show-more="true"></members-vue>
     <footer-vue></footer-vue>
   </div>
 </template>

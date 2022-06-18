@@ -3,6 +3,9 @@ import { reactive } from "vue";
 import type { member } from "../data/members";
 import { topMemberList } from "../data/members";
 const list = reactive<Array<member>>(topMemberList);
+const props = defineProps<{
+  showMore?: Boolean;
+}>();
 </script>
 
 <template>
@@ -16,7 +19,7 @@ const list = reactive<Array<member>>(topMemberList);
         </div>
       </div>
     </div>
-    <router-link to="/members"> See More </router-link>
+    <router-link v-if="props.showMore" to="/members"> See More </router-link>
   </div>
 </template>
 

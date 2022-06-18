@@ -16,6 +16,7 @@ const list = reactive<Array<member>>(topMemberList);
         </div>
       </div>
     </div>
+    <router-link to="/members"> See More </router-link>
   </div>
 </template>
 
@@ -23,10 +24,27 @@ const list = reactive<Array<member>>(topMemberList);
 .members {
   width: 100vw;
   padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   h2 {
     text-align: center;
     font-size: 2rem;
     color: #232323;
+  }
+  a {
+    color: #fff;
+    background-color: #fab340;
+    padding: 5px 35px;
+    border: 1px solid #fab340;
+    border-radius: 5px;
+    transition: 0.2s;
+    &:hover,
+    &:hover {
+      background-color: transparent;
+      color: #fab340;
+      transform: scale(110%);
+    }
   }
   .memberList {
     display: flex;

@@ -1,3 +1,18 @@
+<script lang="ts" setup>
+import { reactive } from "vue";
+
+interface link {
+  title: string;
+  url: string;
+}
+const links = reactive<Array<link>>([
+  {
+    title: "聯絡我們",
+    url: "/contact",
+  },
+]);
+</script>
+
 <template>
   <footer>
     <div class="infos">
@@ -9,6 +24,9 @@
           >beaproblemchild_2022</a
         >
       </div>
+    </div>
+    <div class="linkBar">
+      <router-link v-for="i in links" :to="i.url">{{ i.title }}</router-link>
     </div>
     <div class="copyright">
       Copyright © 2022 beaproblemchild. All rights reserved.
@@ -24,16 +42,17 @@ footer {
   background-color: #232323;
   color: #ffffff;
   padding: 50px 0 20px 0;
+
+  .linkBar {
+    margin-bottom: 20px;
+  }
   .infos {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     .detail {
       display: flex;
       i {
         font-size: 28px;
         margin-right: 10px;
-        color: #ffffff;
-      }
-      a {
         color: #ffffff;
       }
     }

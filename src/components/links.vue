@@ -49,7 +49,6 @@ const links = reactive<Array<Link>>(linkGroup);
         }
         a {
           font-size: 1.3rem;
-          color: #ffcf90;
         }
       }
     }

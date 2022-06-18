@@ -24,6 +24,12 @@ const links = reactive<Array<link>>([
           >beaproblemchild_2022</a
         >
       </div>
+      <div class="detail">
+        <i class="bx bxl-github"></i
+        ><a target="_blank" href="https://github.com/beaproblemchild"
+          >beaproblemchild_2022</a
+        >
+      </div>
     </div>
     <div class="linkBar">
       <router-link v-for="i in links" :to="i.url">{{ i.title }}</router-link>
@@ -50,6 +56,7 @@ footer {
     margin-bottom: 10px;
     .detail {
       display: flex;
+      margin-bottom: 3px;
       i {
         font-size: 28px;
         margin-right: 10px;

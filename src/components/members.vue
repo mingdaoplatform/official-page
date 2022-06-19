@@ -1,22 +1,27 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
 import type { member } from "../data/members";
-import { topMemberList } from "../data/members";
-const list = reactive<Array<member>>(topMemberList);
+interface propsType {
+  title: string;
+  showMore: boolean;
+  list: Array<member>;
+}
+const props = defineProps<propsType>();
+const list = reactive<Array<member>>(props.list);
 </script>
 
 <template>
   <div class="members">
-    <h2>核心成員 Core Members</h2>
+    <h2>{{ props.title }}</h2>
     <div class="memberList">
       <div class="memberBlock" v-for="i in list">
         <div class="member">
-          <div class="name">{{ i.name }}</div>
+          <div class="name" v-html="i.name"></div>
           <div class="title">{{ i.title }}</div>
         </div>
       </div>
     </div>
-    <router-link to="/members"> See More </router-link>
+    <router-link v-if="props.showMore" to="/members"> See More </router-link>
   </div>
 </template>
 

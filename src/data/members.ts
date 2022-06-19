@@ -132,7 +132,19 @@ export const normalMemberList: member[] = [
     title: "外交官",
   },
   {
-    name: "黃芊瑀",
-    title: "外交官",
+    name: "鄭有倫",
+    title: "社會解題  英文解題"
   },
+  {
+    name: "劉容銨",
+    title: "心靈雞湯版"
+  },
+  {
+    name: "吳亞宸",
+    title: "心靈雞湯版"
+  },
+  {
+    name: "吳家諺",
+    title: "糾察隊"
+  }
 ];

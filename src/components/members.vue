@@ -16,7 +16,7 @@ const list = reactive<Array<member>>(props.list);
     <div class="memberList">
       <div class="memberBlock" v-for="i in list">
         <div class="member">
-          <div class="name">{{ i.name }}</div>
+          <div class="name" v-html="i.name"></div>
           <div class="title">{{ i.title }}</div>
         </div>
       </div>

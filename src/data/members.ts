@@ -5,7 +5,7 @@ export interface member {
 
 export const topMemberList: member[] = [
   {
-    name: "王千育",
+    name: "王千育 <i class='bx bxs-heart' style='color: #67cf2d; font-size: 20px'></i>",
     title: "總召集人",
   },
   {

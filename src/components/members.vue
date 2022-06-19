@@ -1,16 +1,18 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
 import type { member } from "../data/members";
-import { topMemberList } from "../data/members";
-const list = reactive<Array<member>>(topMemberList);
-const props = defineProps<{
-  showMore?: Boolean;
-}>();
+interface propsType {
+  title: string;
+  showMore: boolean;
+  list: Array<member>;
+}
+const props = defineProps<propsType>();
+const list = reactive<Array<member>>(props.list);
 </script>
 
 <template>
   <div class="members">
-    <h2>核心成員 Core Members</h2>
+    <h2>{{ props.title }}</h2>
     <div class="memberList">
       <div class="memberBlock" v-for="i in list">
         <div class="member">

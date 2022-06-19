@@ -6,6 +6,8 @@ import linksVue from "../components/links.vue";
 import faqVue from "../components/faq.vue";
 import membersVue from "../components/members.vue";
 import footerVue from "../components/footer.vue";
+
+import { topMemberList } from "../data/members";
 </script>
 
 <template>
@@ -15,7 +17,11 @@ import footerVue from "../components/footer.vue";
     <goal-vue></goal-vue>
     <links-vue></links-vue>
     <faq-vue></faq-vue>
-    <members-vue :show-more="true"></members-vue>
+    <members-vue
+      title="核心成員 Core Members"
+      :show-more="true"
+      :list="topMemberList"
+    ></members-vue>
     <footer-vue></footer-vue>
   </div>
 </template>

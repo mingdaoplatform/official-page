@@ -12,6 +12,11 @@ const routes: RouteRecordRaw[] = [
     name: "團隊成員 - be a problem child",
     component: () => import("../views/member.vue"),
   },
+  {
+    path: "/contact",
+    name: "聯絡我們 - be a problem child",
+    component: () => import("../views/contact.vue"),
+  },
 ];
 
 const router = createRouter({

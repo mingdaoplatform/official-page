@@ -1,5 +1,10 @@
+<script lang="ts" setup>
+import navbarVue from "../components/navbar.vue";
+</script>
+
 <template>
   <div class="contact">
+    <navbar-vue></navbar-vue>
     <header>Contact Us</header>
     <div class="contactBlock">
       <h2>Official</h2>

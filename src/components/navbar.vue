@@ -1,12 +1,17 @@
 <script lang="ts" setup>
 import Logo from "../assets/logo.png";
+import { useRouter } from "vue-router";
+const router = useRouter();
+function goHome() {
+  router.push("/");
+}
 </script>
 
 <template>
   <div class="navbar">
     <div class="logo">
       <img :src="Logo" />
-      <div class="title">
+      <div class="title" @click="goHome">
         <h1>做個問題兒童</h1>
         <h2>Beaproblemchild</h2>
       </div>
@@ -14,10 +19,12 @@ import Logo from "../assets/logo.png";
     <input type="checkbox" id="menu" style="display: none" />
     <label for="menu"><i class="bx bx-menu"></i></label>
     <div class="nav">
+      <router-link to="/">首頁</router-link>
       <router-link to="/members">成員</router-link>
       <router-link to="/contact">聯絡我們</router-link>
     </div>
     <div class="menu">
+      <router-link to="/">首頁</router-link>
       <router-link to="/members">成員</router-link>
       <router-link to="/contact">聯絡我們</router-link>
     </div>
@@ -26,6 +33,7 @@ import Logo from "../assets/logo.png";
 <style lang="scss" scoped>
 @import "../scss/global.scss";
 .navbar {
+  z-index: 999999;
   position: sticky;
   top: 0;
   width: 100vw;
@@ -49,6 +57,7 @@ import Logo from "../assets/logo.png";
     }
   }
   .logo {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;

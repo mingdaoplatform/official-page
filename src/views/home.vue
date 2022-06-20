@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import bannerVue from "../components/banner.vue";
+import navbarVue from "../components/navbar.vue";
 import welcomeVue from "../components/welcome.vue";
 import goalVue from "../components/goal.vue";
 import linksVue from "../components/links.vue";
@@ -13,6 +14,7 @@ import { topMemberList } from "../data/members";
 <template>
   <div class="home">
     <banner-vue></banner-vue>
+    <navbar-vue></navbar-vue>
     <welcome-vue></welcome-vue>
     <goal-vue></goal-vue>
     <links-vue></links-vue>
@@ -29,6 +31,6 @@ import { topMemberList } from "../data/members";
 <style lang="scss">
 .home {
   width: 100vw;
-  overflow-x: hidden;
+  position: relative;
 }
 </style>

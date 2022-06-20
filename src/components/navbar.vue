@@ -28,6 +28,14 @@ import Logo from "../assets/logo.png";
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  .nav {
+    a {
+      margin-right: 15px;
+      font-size: 1.1rem;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
   .logo {
     display: flex;
     flex-direction: row;

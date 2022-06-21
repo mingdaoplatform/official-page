@@ -31,5 +31,5 @@
 信箱：
  - lazpytb+bapc@gmail.com（葉柏辰） 
  - 81yy587@gmail.com（林仲文） 
- - toomuchname1@gmail.com（彭柏鈞ouo）
+ - toomuchname1@gmail.com（彭柏鈞）
  - hongnai4507@gmail.com（倪睿宏）

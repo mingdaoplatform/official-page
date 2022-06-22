@@ -21,6 +21,18 @@ const routes: RouteRecordRaw[] = [
     path: "/app",
     name: "立即發問 - be a problem child",
     component: () => import("../views/app.vue"),
+    children: [
+      {
+        name: "立即發問 - be a problem child",
+        path: "",
+        component: () => import("../views/app/index.vue"),
+      },
+      {
+        name: "新增問題 - be a problem child",
+        path: "/add",
+        component: () => import("../views/app/newPost.vue"),
+      },
+    ],
   },
 ];
 

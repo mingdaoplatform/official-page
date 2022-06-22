@@ -38,28 +38,51 @@ function getSub(id: number): string {
 
 const subList = [
   {
+    name: "All",
+    index: -1,
+  },
+  {
     name: "國文",
     index: 0,
   },
   {
     name: "英文",
-    index: 0,
+    index: 1,
   },
   {
     name: "數學",
-    index: 0,
+    index: 2,
   },
   {
     name: "社會",
-    index: 0,
+    index: 3,
   },
   {
     name: "自然",
-    index: 0,
+    index: 4,
   },
 ];
 const postList = ref<Array<postData>>([]);
 const isLoad = ref(false);
+
+const changeSub = async (sub: number) => {
+  let url = `${apiUrl}/post/sub/${sub}`;
+  if (sub < 0) {
+    url = `${apiUrl}/post/`;
+  }
+  try {
+    const response = await fetch(url);
+    console.log(response);
+    const data = (await response.json()) as postData[];
+    postList.value = data;
+    isLoad.value = true;
+  } catch (err) {
+    alert("伺服器錯誤");
+    console.error(err);
+    // router.push("/");
+  }
+};
+
 onMounted(async () => {
   try {
     const response = await fetch(`${apiUrl}/post/`);
@@ -78,7 +101,7 @@ onMounted(async () => {
   <div class="index">
     <div class="wrap">
       <div class="subjects">
-        <div class="sub" v-for="i in subList">
+        <div class="sub" v-for="i in subList" @click="changeSub(i.index)">
           {{ i.name }}
         </div>
       </div>
@@ -121,7 +144,7 @@ onMounted(async () => {
       padding: 10px 0;
       background-color: #fff;
       border-radius: 8px;
-      max-height: 214px;
+      max-height: 253px;
       @include phone {
         width: 100%;
         max-width: 100vw;

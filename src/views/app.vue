@@ -90,7 +90,11 @@ onMounted(async () => {
           </div>
           <div class="post" v-for="i in postList">
             <div class="info">
-              {{ getSub(i.subject) }} {{ getDateFromCode(i.time) }}
+              {{ getSub(i.subject) }}
+            </div>
+            <div class="content">{{ i.content }}</div>
+            <div class="info" style="text-align: end">
+              Post at: {{ getDateFromCode(i.time) }}
             </div>
           </div>
         </div>
@@ -100,6 +104,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss">
+@import "../scss/global.scss";
 .appPage {
   .app {
     padding: 20px;
@@ -107,12 +112,20 @@ onMounted(async () => {
       display: flex;
       max-width: 1440px;
       margin: 20px auto;
+      flex-direction: row;
+      @include phone {
+        flex-direction: column;
+      }
       .subjects {
         width: 30%;
         max-width: 270px;
         padding: 10px 0;
         background-color: #fff;
         border-radius: 8px;
+        @include phone {
+          width: 100%;
+          max-width: 100vw;
+        }
         .sub {
           &:hover {
             background-color: #eee;
@@ -135,6 +148,10 @@ onMounted(async () => {
         flex-direction: column;
         align-items: center;
         width: 70%;
+        @include phone {
+          margin: 50px 0;
+          width: 100%;
+        }
         .loading {
           background-color: #90fc4863;
           color: #41a100;
@@ -153,6 +170,16 @@ onMounted(async () => {
           background-color: #fff;
           border-radius: 10px;
           padding: 10px;
+          width: 100%;
+          .info {
+            color: #696969;
+            font-size: 0.8rem;
+          }
+          .content {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+          }
         }
       }
     }

@@ -12,6 +12,30 @@ interface postData {
   time: number;
 }
 
+function getDateFromCode(code: number) {
+  const date = new Date(code);
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+}
+
+function getSub(id: number): string {
+  if (id === 0) {
+    return "國文";
+  }
+  if (id === 1) {
+    return "英文";
+  }
+  if (id === 2) {
+    return "數學";
+  }
+  if (id === 3) {
+    return "社會";
+  }
+  if (id === 4) {
+    return "自然";
+  }
+  return "自訂";
+}
+
 const subList = [
   {
     name: "國文",
@@ -34,13 +58,14 @@ const subList = [
     index: 0,
   },
 ];
-const postList = ref();
+const postList = ref<Array<postData>>([]);
 const isLoad = ref(false);
 onMounted(async () => {
   try {
     const response = await fetch(`${apiUrl}/post/`);
-    const data = await response.json();
+    const data = (await response.json()) as postData[];
     postList.value = data;
+    isLoad.value = true;
   } catch (err) {
     alert("伺服器錯誤");
     // console.error(err);
@@ -62,6 +87,11 @@ onMounted(async () => {
         <div class="posts">
           <div class="loading" v-if="!isLoad">
             資料載入中 <i class="bx bx-loader bx-spin"></i>
+          </div>
+          <div class="post" v-for="i in postList">
+            <div class="info">
+              {{ getSub(i.subject) }} {{ getDateFromCode(i.time) }}
+            </div>
           </div>
         </div>
       </div>
@@ -118,6 +148,11 @@ onMounted(async () => {
             top: 3.6px;
             left: 10px;
           }
+        }
+        .post {
+          background-color: #fff;
+          border-radius: 10px;
+          padding: 10px;
         }
       }
     }

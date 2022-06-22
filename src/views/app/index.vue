@@ -82,6 +82,7 @@ onMounted(async () => {
         </div>
       </div>
       <div class="posts">
+        <router-link to="/app/add" class="new">新增問題</router-link>
         <div class="loading" v-if="!isLoad">
           資料載入中 <i class="bx bx-loader bx-spin"></i>
         </div>
@@ -147,6 +148,16 @@ onMounted(async () => {
         margin: 50px 0;
         width: 100%;
       }
+      .new {
+        width: 100%;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 10px;
+        margin: 10px 0;
+        padding: 8px 0;
+        color: #fab340;
+        text-decoration: none;
+      }
       .loading {
         background-color: #90fc4863;
         color: #41a100;
@@ -162,10 +173,15 @@ onMounted(async () => {
         }
       }
       .post {
+        cursor: pointer;
         background-color: #fff;
         border-radius: 10px;
-        padding: 10px;
+        padding: 20px;
         width: 100%;
+        transition: 0.2s;
+        &:hover {
+          transform: scale(103%);
+        }
         .info {
           color: #696969;
           font-size: 0.8rem;

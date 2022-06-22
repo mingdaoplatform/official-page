@@ -29,7 +29,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         name: "新增問題 - be a problem child",
-        path: "/add",
+        path: "add",
         component: () => import("../views/app/newPost.vue"),
       },
     ],

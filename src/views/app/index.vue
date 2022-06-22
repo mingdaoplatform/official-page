@@ -67,7 +67,7 @@ onMounted(async () => {
     isLoad.value = true;
   } catch (err) {
     alert("伺服器錯誤");
-    // console.error(err);
+    console.error(err);
     router.push("/");
   }
 });
@@ -86,13 +86,15 @@ onMounted(async () => {
         <div class="loading" v-if="!isLoad">
           資料載入中 <i class="bx bx-loader bx-spin"></i>
         </div>
-        <div class="post" v-for="i in postList">
-          <div class="info">
-            {{ getSub(i.subject) }}
-          </div>
-          <div class="content">{{ i.content }}</div>
-          <div class="info" style="text-align: end">
-            Post at: {{ getDateFromCode(i.time) }}
+        <div class="list">
+          <div class="post" v-for="i in postList">
+            <div class="info">
+              {{ getSub(i.subject) }}
+            </div>
+            <div class="content">{{ i.content }}</div>
+            <div class="info" style="text-align: end">
+              Post at: {{ getDateFromCode(i.time) }}
+            </div>
           </div>
         </div>
       </div>
@@ -118,6 +120,7 @@ onMounted(async () => {
       padding: 10px 0;
       background-color: #fff;
       border-radius: 8px;
+      max-height: 214px;
       @include phone {
         width: 100%;
         max-width: 100vw;
@@ -140,9 +143,9 @@ onMounted(async () => {
     }
     .posts {
       margin-left: 50px;
+      align-items: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
       width: 70%;
       @include phone {
         margin: 50px 0;
@@ -172,24 +175,30 @@ onMounted(async () => {
           left: 10px;
         }
       }
-      .post {
-        cursor: pointer;
-        background-color: #fff;
-        border-radius: 10px;
-        padding: 20px;
+      .list {
+        display: flex;
+        flex-direction: column-reverse;
         width: 100%;
-        transition: 0.2s;
-        &:hover {
-          transform: scale(103%);
-        }
-        .info {
-          color: #696969;
-          font-size: 0.8rem;
-        }
-        .content {
-          margin: 10px 0;
-          font-size: 1.2rem;
-          font-weight: 300;
+        .post {
+          cursor: pointer;
+          background-color: #fff;
+          border-radius: 10px;
+          padding: 20px;
+          margin-bottom: 20px;
+          width: 100%;
+          transition: 0.2s;
+          &:hover {
+            transform: scale(103%);
+          }
+          .info {
+            color: #696969;
+            font-size: 0.8rem;
+          }
+          .content {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+          }
         }
       }
     }

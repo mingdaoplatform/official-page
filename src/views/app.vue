@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import navbarVue from "../components/navbar.vue";
 import { apiUrl } from "../api";
 import { useRouter } from "vue-router";
@@ -42,9 +42,9 @@ onMounted(async () => {
     const data = await response.json();
     postList.value = data;
   } catch (err) {
-    // alert("伺服器錯誤");
-    console.error(err);
-    // router.push("/");
+    alert("伺服器錯誤");
+    // console.error(err);
+    router.push("/");
   }
 });
 </script>

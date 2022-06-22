@@ -2,8 +2,9 @@
 import { ref, onMounted } from "vue";
 import { apiUrl } from "../../api";
 import { useRouter } from "vue-router";
+import Emoji from "emoji-js";
 const router = useRouter();
-
+const emoji = new Emoji();
 interface postData {
   content: string;
   subject: number;
@@ -91,7 +92,7 @@ onMounted(async () => {
             <div class="info">
               {{ getSub(i.subject) }}
             </div>
-            <div class="content">{{ i.content }}</div>
+            <div class="content" v-html="emoji.replace_colons(i.content)"></div>
             <div class="info" style="text-align: end">
               Post at: {{ getDateFromCode(i.time) }}
             </div>

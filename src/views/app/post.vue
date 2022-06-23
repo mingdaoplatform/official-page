@@ -1,14 +1,31 @@
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
-import { useRoute } from "vue-router";
+import { onMounted, ref } from "vue";
+import { apiUrl } from "../../api";
+import { useRoute, useRouter } from "vue-router";
+import { getDateFromCode, getSub } from "../../utils";
 const Route = useRoute();
+const router = useRouter();
 const params = Route.params;
+
+interface postData {
+  content: string;
+  subject: number;
+  id: string | any;
+  time: number;
+}
 
 interface replyData {
   content: string;
   replyTo: string;
   isAdmin: boolean;
 }
+
+const postContent = ref<postData>({
+  time: 0,
+  content: "",
+  subject: -1,
+  id: params.id,
+});
 
 const replies = ref<Array<replyData>>([
   {
@@ -17,18 +34,35 @@ const replies = ref<Array<replyData>>([
     isAdmin: true,
   },
 ]);
+onMounted(async () => {
+  try {
+    const response = await fetch(`${apiUrl}/post/${params.id}`);
+    const data = (await response.json()) as postData;
+    postContent.value = data;
+  } catch (err) {
+    alert("查無此問題");
+    // console.error(err);
+    router.push("/");
+  }
+  try {
+    const response = await fetch(`${apiUrl}/reply/${params.id}`);
+    const data = (await response.json()) as replyData[];
+    replies.value = data;
+  } catch (err) {
+    alert("查無此問題");
+    console.error(err);
+    // router.push("/");
+  }
+});
 </script>
 
 <template>
   <div class="post">
-    <div class="info">國文</div>
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae
-      saepe nobis fuga distinctio quasi blanditiis commodi ut, quidem quis,
-      placeat, nostrum quisquam dignissimos. Nihil praesentium a commodi nulla
-      perspiciatis odit.
+    <div class="info">{{ getSub(postContent.subject) }}</div>
+    <div class="content">{{ postContent.content }}</div>
+    <div class="info" style="text-align: end">
+      Posted at {{ getDateFromCode(postContent.time) }}
     </div>
-    <div class="info" style="text-align: end">Posted at 2022 6 22</div>
     <div class="replies">
       <div class="add">
         <input type="text" placeholder="回答一些答案......" />

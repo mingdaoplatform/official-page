@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import { apiUrl } from "../../api";
 import { useRouter } from "vue-router";
 import Emoji from "emoji-js";
+import { getDateFromCode, getSub } from "../../utils";
 const router = useRouter();
 const emoji = new Emoji();
 interface postData {
@@ -10,30 +11,6 @@ interface postData {
   subject: number;
   id: string;
   time: number;
-}
-
-function getDateFromCode(code: number) {
-  const date = new Date(code);
-  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
-}
-
-function getSub(id: number): string {
-  if (id === 0) {
-    return "國文";
-  }
-  if (id === 1) {
-    return "英文";
-  }
-  if (id === 2) {
-    return "數學";
-  }
-  if (id === 3) {
-    return "社會";
-  }
-  if (id === 4) {
-    return "自然";
-  }
-  return "自訂";
 }
 
 const subList = [
@@ -84,6 +61,10 @@ const changeSub = async (sub: number) => {
   }
 };
 
+function toQuestion(id: string) {
+  router.push("/app/post/" + id);
+}
+
 onMounted(async () => {
   try {
     const response = await fetch(`${apiUrl}/post/`);
@@ -112,7 +93,7 @@ onMounted(async () => {
           資料載入中 <i class="bx bx-loader bx-spin"></i>
         </div>
         <div class="list" v-else>
-          <div class="post" v-for="i in postList">
+          <div class="post" v-for="i in postList" @click="toQuestion(i.id)">
             <div class="info">
               {{ getSub(i.subject) }}
             </div>

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { apiUrl } from "../../api";
 import { useRoute, useRouter } from "vue-router";
 import { getDateFromCode, getSub } from "../../utils";
+import axios from "axios";
 const Route = useRoute();
 const router = useRouter();
 const params = Route.params;
@@ -20,6 +21,8 @@ interface replyData {
   isAdmin: boolean;
 }
 
+const reply = ref("");
+
 const postContent = ref<postData>({
   time: 0,
   content: "",
@@ -29,19 +32,46 @@ const postContent = ref<postData>({
 
 const replies = ref<Array<replyData>>([
   {
-    content: "哈哈哈哈哈",
-    replyTo: "iddddd",
+    content: "資料載入中",
+    replyTo: "",
     isAdmin: true,
   },
 ]);
+
+const newReply = async () => {
+  if (reply.value == "") return;
+  try {
+    const token = localStorage.getItem("TOKEN") || "";
+    console.warn(token);
+    const res = await axios.post(
+      `${apiUrl}/reply/new/${postContent.value.id}`,
+      {
+        content: reply.value,
+        token: token,
+      }
+    );
+    if (res.status == 200 || res.status == 201) {
+      location.reload();
+    } else {
+      alert("執行階段錯誤(Runtime Error) Code" + res.status);
+      router.push("/");
+    }
+  } catch (err) {
+    const E = err as any;
+    alert(`錯誤 ${E.status}`);
+    console.error(err);
+    router.push("/");
+  }
+};
+
 onMounted(async () => {
   try {
-    const response = await fetch(`${apiUrl}/post/${params.id}`);
+    const response = await fetch(`${apiUrl}/post/${params.id}`, {});
     const data = (await response.json()) as postData;
     postContent.value = data;
   } catch (err) {
     alert("查無此問題");
-    // console.error(err);
+    console.error(err);
     router.push("/");
   }
   try {
@@ -51,7 +81,7 @@ onMounted(async () => {
   } catch (err) {
     alert("查無此問題");
     console.error(err);
-    // router.push("/");
+    router.push("/");
   }
 });
 </script>
@@ -65,12 +95,15 @@ onMounted(async () => {
     </div>
     <div class="replies">
       <div class="add">
-        <input type="text" placeholder="回答一些答案......" />
-        <button>留言</button>
+        <input type="text" v-model="reply" placeholder="回答一些答案......" />
+        <button @click="newReply()">留言</button>
       </div>
-      <div class="reply" v-for="i in replies">
-        <div class="admin" v-show="i.isAdmin">官方回答</div>
-        <div class="text">{{ i.content }}</div>
+      <h2>所有回答</h2>
+      <div class="list">
+        <div class="reply" v-for="i in replies">
+          <div class="admin" v-show="i.isAdmin">官方回答</div>
+          <div class="text">{{ i.content }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -106,7 +139,7 @@ onMounted(async () => {
         margin-right: 1%;
         outline: none;
         border-radius: 5px;
-        font-size: 0.8rem;
+        font-size: 1rem;
         padding: 3px 10px;
         border: 1.4px solid #888;
         transition: 0.2s;
@@ -122,7 +155,7 @@ onMounted(async () => {
         color: #fff;
         background-color: #fab340;
         font-size: 1rem;
-        padding: 1px 0;
+        padding: 3px 0;
         cursor: pointer;
         transition: 0.2s;
         &:hover {
@@ -131,8 +164,15 @@ onMounted(async () => {
         }
       }
     }
-    .reply {
+    h2 {
       margin: 20px 0;
+    }
+    .list {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .reply {
+      margin: 5 px 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -148,8 +188,8 @@ onMounted(async () => {
         font-size: 1.2rem;
         margin: 5px 0;
       }
-      .text.admin {
-        border-left: 2px solid #fab340;
+      .text {
+        border-left: 4px solid #fab340;
         padding: 0 10px;
       }
     }

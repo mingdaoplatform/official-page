@@ -10,6 +10,10 @@ const links = reactive<Array<link>>([
     title: "聯絡我們",
     url: "/contact",
   },
+  {
+    title: "管理員登入",
+    url: "/login",
+  },
 ]);
 </script>
 
@@ -51,6 +55,11 @@ footer {
 
   .linkBar {
     margin-bottom: 20px;
+    a {
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
   }
   .infos {
     margin-bottom: 10px;

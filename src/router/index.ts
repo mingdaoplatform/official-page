@@ -39,6 +39,11 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: "/login",
+    name: "管理登入 - be a problem child",
+    component: () => import("../views/login.vue"),
+  },
 ];
 
 const router = createRouter({

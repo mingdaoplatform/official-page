@@ -4,7 +4,7 @@ export interface Link {
 }
 export const linkGroup: Link[] = [
   {
-    href: "https://hackmd.io/@beaproblemchild/r1OEAZ4K5",
+    href: "/app",
     title: "各科問題討論板",
   },
   {

@@ -32,6 +32,11 @@ const routes: RouteRecordRaw[] = [
         path: "add",
         component: () => import("../views/app/newPost.vue"),
       },
+      {
+        name: "Post - be a problem child",
+        path: "post/:id",
+        component: () => import("../views/app/post.vue"),
+      },
     ],
   },
 ];

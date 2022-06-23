@@ -80,7 +80,7 @@ const changeSub = async (sub: number) => {
   } catch (err) {
     alert("伺服器錯誤");
     console.error(err);
-    // router.push("/");
+    router.push("/");
   }
 };
 
@@ -118,7 +118,7 @@ onMounted(async () => {
             </div>
             <div class="content" v-html="emoji.replace_colons(i.content)"></div>
             <div class="info" style="text-align: end">
-              Post at: {{ getDateFromCode(i.time) }}
+              Posted at: {{ getDateFromCode(i.time) }}
             </div>
           </div>
         </div>

@@ -22,11 +22,13 @@ function goHome() {
       <router-link to="/">首頁</router-link>
       <router-link to="/members">成員</router-link>
       <router-link to="/contact">聯絡我們</router-link>
+      <router-link class="question" to="/app">前往發問</router-link>
     </div>
     <div class="menu">
       <router-link to="/">首頁</router-link>
       <router-link to="/members">成員</router-link>
       <router-link to="/contact">聯絡我們</router-link>
+      <router-link class="question" to="/app">前往發問</router-link>
     </div>
   </div>
 </template>
@@ -54,6 +56,13 @@ function goHome() {
       font-size: 1.1rem;
       color: #fff;
       text-decoration: none;
+    }
+
+    a.question {
+      padding: 5px 15px;
+      background-color: #fff;
+      border-radius: 5px;
+      color: #fab340;
     }
   }
   .logo {
@@ -98,6 +107,13 @@ function goHome() {
       text-decoration: none;
       font-size: 1rem;
       margin-bottom: 10px;
+    }
+    a.question {
+      margin-top: 15px;
+      padding: 5px 15px;
+      background-color: #fff;
+      border-radius: 5px;
+      color: #fab340;
     }
   }
   @include phone {

@@ -17,6 +17,33 @@ const routes: RouteRecordRaw[] = [
     name: "聯絡我們 - be a problem child",
     component: () => import("../views/contact.vue"),
   },
+  {
+    path: "/app",
+    name: "立即發問 - be a problem child",
+    component: () => import("../views/app.vue"),
+    children: [
+      {
+        name: "立即發問 - be a problem child",
+        path: "",
+        component: () => import("../views/app/index.vue"),
+      },
+      {
+        name: "新增問題 - be a problem child",
+        path: "add",
+        component: () => import("../views/app/newPost.vue"),
+      },
+      {
+        name: "Post - be a problem child",
+        path: "post/:id",
+        component: () => import("../views/app/post.vue"),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    name: "管理登入 - be a problem child",
+    component: () => import("../views/login.vue"),
+  },
 ];
 
 const router = createRouter({

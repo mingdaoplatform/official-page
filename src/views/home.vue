@@ -8,7 +8,12 @@ import faqVue from "../components/faq.vue";
 import membersVue from "../components/members.vue";
 import footerVue from "../components/footer.vue";
 
+import { apiUrl } from "../api";
 import { topMemberList } from "../data/members";
+import { onMounted } from "vue";
+onMounted(() => {
+  fetch(apiUrl);
+});
 </script>
 
 <template>

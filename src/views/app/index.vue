@@ -70,6 +70,7 @@ const changeSub = async (sub: number) => {
   if (sub < 0) {
     url = `${apiUrl}/post/`;
   }
+  isLoad.value = false;
   try {
     const response = await fetch(url);
     console.log(response);
@@ -110,7 +111,7 @@ onMounted(async () => {
         <div class="loading" v-if="!isLoad">
           資料載入中 <i class="bx bx-loader bx-spin"></i>
         </div>
-        <div class="list">
+        <div class="list" v-else>
           <div class="post" v-for="i in postList">
             <div class="info">
               {{ getSub(i.subject) }}

@@ -17,6 +17,10 @@ import navbarVue from "../components/navbar.vue";
             >beaproblemchild_2022</a
           >
         </li>
+        <li>
+          <i class="bx bxl-gmail"></i>
+          <span>beaproblemchild@gmail.com</span>
+        </li>
       </ul>
     </div>
     <div class="contactBlock">

@@ -141,6 +141,10 @@ export const normalMemberList: member[] = [
     title: "心靈雞湯版"
   },
   {
+    name: "許閔勛",
+    title: "心靈雞湯版"
+  },
+  {
     name: "吳家諺",
     title: "糾察隊"
   }

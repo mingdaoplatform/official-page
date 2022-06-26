@@ -13,6 +13,7 @@ interface postData {
   subject: number;
   id: string | any;
   time: number;
+  imgUrl?: string;
 }
 
 interface replyData {
@@ -93,6 +94,7 @@ onMounted(async () => {
     <div class="info" style="text-align: end">
       Posted at {{ getDateFromCode(postContent.time) }}
     </div>
+    <img v-if="postContent.imgUrl" :src="postContent.imgUrl" />
     <div class="replies">
       <div class="add">
         <input type="text" v-model="reply" placeholder="回答一些答案......" />
@@ -128,8 +130,14 @@ onMounted(async () => {
     font-weight: 300;
   }
 
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
   .replies {
     width: 100%;
+    margin-top: 30px;
     .add {
       width: 100%;
       display: flex;

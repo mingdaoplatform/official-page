@@ -2,24 +2,55 @@
 import { ref } from "vue";
 import { apiUrl } from "../../api";
 import router from "../../router";
+import imgur from "imgur";
 import axios from "axios";
+
+let fileData: any = null;
+const fileHtml = ref(`拖曳或點按上傳檔案<br> < 3Mb x 1張`);
+const fileChange = (e: Event | any) => {
+  const itemArray = [...e.target.files];
+  console.warn(itemArray);
+  try {
+    fileData = itemArray.find((i) => i.type.startsWith("image/"));
+  } catch {
+    alert("請上傳圖片");
+    return;
+  }
+  fileHtml.value = `以上傳 ${fileData.name}`;
+};
 
 const subjectSelected = ref("");
 const content = ref("");
 const add = async () => {
+  if (subjectSelected.value == "") {
+    alert("請選擇科目");
+    return;
+  }
+  if (content.value == "") {
+    alert("請填入問題內容");
+    return;
+  }
+  let imgUrl = "";
+  if (fileData != null) {
+    try {
+      const client = new imgur({ clientId: "fb27b0fc59c68a1" });
+      const response: any = await client.upload({
+        image: fileData,
+        type: "stream",
+      });
+      const id = response.data.id;
+      imgUrl = `https://i.imgur.com/${id}`;
+    } catch (err) {
+      alert("圖片上傳失敗");
+    }
+  }
   const injectData = {
     subject: Number(subjectSelected.value),
     content: content.value,
+    imgUrl: imgUrl,
   };
+  console.warn(injectData);
   try {
-    if (subjectSelected.value == "") {
-      alert("請選擇科目");
-      return;
-    }
-    if (content.value == "") {
-      alert("請填入問題內容");
-      return;
-    }
     const result = await axios.post(`${apiUrl}/post/add`, injectData);
     const data = result.data;
     if (data.code) {
@@ -39,12 +70,15 @@ const add = async () => {
     <h1>新增問題</h1>
     <textarea name="content" v-model="content" id="content"></textarea>
     <select name="subject" v-model="subjectSelected" id="subject">
+      <option value="">請選擇科目 (必填)</option>
       <option value="0">國文</option>
       <option value="1">英文</option>
       <option value="2">數學</option>
       <option value="3">社會</option>
       <option value="4">自然</option>
     </select>
+    <input type="file" @change="fileChange" id="ImgUpload" />
+    <label for="ImgUpload" v-html="fileHtml"></label>
     <button @click="add">送出</button>
   </div>
 </template>
@@ -79,6 +113,20 @@ const add = async () => {
     width: 100%;
     max-width: 200px;
     outline: none;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  label {
+    margin: 10px;
+    padding: 10px 25px;
+    border: 1px solid #fab340;
+    background-color: #fab3404f;
+    color: #fab340;
+    text-align: center;
+    border-radius: 5px;
   }
 
   button {

@@ -97,7 +97,11 @@ onMounted(async () => {
     <img v-if="postContent.imgUrl" :src="postContent.imgUrl" />
     <div class="replies">
       <div class="add">
-        <input type="text" v-model="reply" placeholder="回答一些答案......" />
+        <textarea
+          type="text"
+          v-model="reply"
+          placeholder="回答一些答案......"
+        />
         <button @click="newReply()">留言</button>
       </div>
       <h2>所有回答</h2>
@@ -112,6 +116,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
+@import "../../scss/global.scss";
 .post {
   max-width: 1000px;
   width: 90vw;
@@ -142,13 +147,15 @@ onMounted(async () => {
       width: 100%;
       display: flex;
       align-items: center;
-      input {
+      textarea {
         width: 74%;
         margin-right: 1%;
         outline: none;
         border-radius: 5px;
         font-size: 1rem;
-        padding: 3px 10px;
+        padding: 5px 10px;
+        height: 3rem;
+        resize: none;
         border: 1.4px solid #888;
         transition: 0.2s;
         &:focus {
@@ -157,18 +164,37 @@ onMounted(async () => {
       }
       button {
         width: 25%;
+        height: 3rem;
         outline: none;
+        font-size: 1.2rem;
         border-radius: 5px;
         border: 1px solid #fab340;
         color: #fff;
         background-color: #fab340;
-        font-size: 1rem;
         padding: 3px 0;
         cursor: pointer;
         transition: 0.2s;
         &:hover {
           background-color: transparent;
           color: #fab340;
+        }
+      }
+      @include phone {
+        flex-direction: column;
+        textarea,
+        button {
+          width: 100%;
+          margin: 0;
+        }
+
+        textarea {
+          height: 5rem;
+        }
+
+        button {
+          margin-top: 10px;
+          height: auto;
+          font-size: 1rem;
         }
       }
     }

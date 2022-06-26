@@ -7,6 +7,7 @@ import axios from "axios";
 
 let fileData: any = null;
 let fileType = "";
+const requestLoading = ref(false);
 const fileHtml = ref(`拖曳或點按上傳檔案<br> < 3Mb x 1張`);
 const fileChange = (e: Event | any) => {
   const itemArray = [...e.target.files];
@@ -37,6 +38,7 @@ const add = async () => {
     alert("請填入問題內容");
     return;
   }
+  requestLoading.value = true;
   let imgUrl = "";
   if (fileData != null) {
     try {
@@ -47,6 +49,7 @@ const add = async () => {
       });
       imgUrl = response.data.link;
     } catch (err) {
+      requestLoading.value = true;
       alert("圖片上傳失敗");
     }
   }
@@ -58,12 +61,14 @@ const add = async () => {
   console.warn(injectData);
   try {
     const result = await axios.post(`${apiUrl}/post/add`, injectData);
+    requestLoading.value = true;
     const data = result.data;
     if (data.code) {
       alert("資料錯誤(403) 請至「聯繫我們」頁面聯繫技術人員");
     }
     location.assign("/app/");
   } catch (err) {
+    requestLoading.value = true;
     console.error(err);
     alert("伺服器錯誤 (500)");
     router.push("/");
@@ -85,7 +90,8 @@ const add = async () => {
     </select>
     <input type="file" @change="fileChange" id="ImgUpload" />
     <label for="ImgUpload" v-html="fileHtml"></label>
-    <button @click="add">送出</button>
+    <button v-if="requestLoading"><i class="bx bx-loader bx-spin"></i></button>
+    <button v-else @click="add">送出</button>
   </div>
 </template>
 
@@ -146,6 +152,9 @@ const add = async () => {
     border-radius: 5px;
     padding: 5px 0;
     color: #fff;
+    i {
+      font-size: 20px;
+    }
   }
 }
 </style>

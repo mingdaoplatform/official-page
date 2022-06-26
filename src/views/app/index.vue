@@ -11,7 +11,9 @@ interface postData {
   subject: number;
   id: string;
   time: number;
+  imgUrl: string;
 }
+const isImg = ref(false);
 
 const subList = [
   {
@@ -101,6 +103,11 @@ onMounted(async () => {
             <div class="info" style="text-align: end">
               Posted at: {{ getDateFromCode(i.time) }}
             </div>
+            <img
+              v-if="i.imgUrl"
+              :src="i.imgUrl"
+              alt="post image cannot loaded"
+            />
           </div>
         </div>
       </div>
@@ -162,7 +169,7 @@ onMounted(async () => {
         text-align: center;
         background-color: #fff;
         border-radius: 10px;
-        margin: 10px 0;
+        margin: 10px 0 20px 0;
         padding: 8px 0;
         color: #fab340;
         text-decoration: none;
@@ -204,6 +211,12 @@ onMounted(async () => {
             margin: 10px 0;
             font-size: 1.2rem;
             font-weight: 300;
+          }
+
+          img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
           }
         }
       }

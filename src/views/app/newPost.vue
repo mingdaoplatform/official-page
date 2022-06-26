@@ -6,12 +6,19 @@ import imgur from "imgur";
 import axios from "axios";
 
 let fileData: any = null;
+let fileType = "";
 const fileHtml = ref(`拖曳或點按上傳檔案<br> < 3Mb x 1張`);
 const fileChange = (e: Event | any) => {
   const itemArray = [...e.target.files];
   console.warn(itemArray);
   try {
     fileData = itemArray.find((i) => i.type.startsWith("image/"));
+    if (fileData.type == "image/jpeg") fileType = ".jpeg";
+    else if (fileData.type == "image/png") fileType = ".png";
+    else {
+      alert("檔案類型不支援 (僅支援 png、 jpeg)");
+      fileData = null;
+    }
   } catch {
     alert("請上傳圖片");
     return;
@@ -38,8 +45,7 @@ const add = async () => {
         image: fileData,
         type: "stream",
       });
-      const id = response.data.id;
-      imgUrl = `https://i.imgur.com/${id}`;
+      imgUrl = response.data.link;
     } catch (err) {
       alert("圖片上傳失敗");
     }

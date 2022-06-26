@@ -108,7 +108,7 @@ onMounted(async () => {
       <div class="list">
         <div class="reply" v-for="i in replies">
           <div class="admin" v-show="i.isAdmin">官方回答</div>
-          <div class="text">{{ i.content }}</div>
+          <div class="text" v-html="i.content.replace(/\n/g, '<br>')"></div>
         </div>
       </div>
     </div>

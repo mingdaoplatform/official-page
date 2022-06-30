@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { Splide, SplideSlide, Options } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
+import img from "../assets/SlideImage.jpg"
 const options: Options = {
   rewind: true,
   autoplay: true,
-  height: "20rem",
+  height: "30rem",
 };
 </script>
 
@@ -12,10 +13,10 @@ const options: Options = {
   <div class="banner">
     <Splide :options="options" aria-label="My Favorite Images">
       <SplideSlide>
-        <p class="content">slide test 1</p>
+        <img :src="img">
       </SplideSlide>
       <SplideSlide>
-        <p class="content">slide test 2</p>
+        <img :src="img">
       </SplideSlide>
     </Splide>
   </div>
@@ -25,12 +26,8 @@ const options: Options = {
 .banner {
   box-shadow: 0px 2px 22px 10px #cacaca;
 }
-.content {
-  width: 100vw;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: antiquewhite;
+img{
+  height: auto;
+  width: 100%;
 }
 </style>

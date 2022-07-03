@@ -30,7 +30,7 @@ export const topMemberList: member[] = [
     title: "外交總長"
   },
   {
-    name: "葉柏辰",
+    name: "葉柏辰 <i class='bx bxs-wrench' style='color: #67cf2d; font-size: 20px'></i>",
     title: "技術總監"
   },
   {

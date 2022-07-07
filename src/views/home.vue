@@ -19,7 +19,6 @@ onMounted(() => {
 
 <template>
   <div class="home">
-    <banner-vue></banner-vue>
     <navbar-vue></navbar-vue>
     <welcome-vue></welcome-vue>
     <goal-vue></goal-vue>
